@@ -1,0 +1,114 @@
+# 项目相关配置
+yihur:
+  # 名称
+  name: yihur
+  # 版本
+  version: 1.1.0
+  # 版权年份
+  copyrightYear: 2019
+  # 实例演示开关
+  demoEnabled: true
+  # 文件路径 示例（ Windows配置D:/mock/uploadPath，Linux配置 /software/fileUploadPath）
+  profile: /software/fileUploadPath
+  # 获取ip地址开关
+  addressEnabled: true
+  # 是否开启操作日志记录
+  isWhetherToOpen: true
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8788
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+
+
+# 日志配置
+logging:
+  level:
+    com.scs: info
+    org.springframework: warn
+
+# Spring配置
+spring:
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  profiles:
+    active: prod
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size:  10MB
+      # 设置总上传的文件大小
+      max-request-size:  20MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+# token配置
+token:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌秘钥
+  secret: abcdefghijklmnopqrstuvwxyz
+  # 令牌有效期（默认30分钟）
+  expireTime: 2880
+
+# MyBatis配置
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.scs.project.**.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mybatis/**/*Mapper.xml
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+# 防止XSS攻击
+xss:
+  # 过滤开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /prod-api/system/notice/*
+  # 匹配链接
+  urlPatterns: /prod-api/system/*,/monitor/*,/tool/*
+
+rsa:
+  public: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrtIX/wvwUTba1o+8kmYxhlkH4PZRQHAom3joVwkpu3jt3dukciLZ3vnqbp9TZcgK+/2CNki4gRaC/azy4sN8IXWBcThnUuVsiU8Zn32uJM1FISBIrqUShId+HQ7BHJvQ9Sv2tMuTwePdCaKBouKj66ULAZDpCGRI1H/Ax48NztwIDAQAB
+  private: MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKu0hf/C/BRNtrWj7ySZjGGWQfg9lFAcCibeOhXCSm7eO3d26RyItne+epun1NlyAr7/YI2SLiBFoL9rPLiw3whdYFxOGdS5WyJTxmffa4kzUUhIEiupRKEh34dDsEcm9D1K/a0y5PB490JooGi4qPrpQsBkOkIZEjUf8DHjw3O3AgMBAAECgYA+48wAtaYmuaAmP3kj6qmkRKi9B7D+9oYxXkvgFF225ebaBs+zB8/tY/L8eChZzIx88ISo1dXXNCmAcwK2kvHdQN++NB7GF+OIUkSWvdw8+rMZw0g99ZPFZJfha7pG6zS5IAOjLLJzWE66kx5YhUWEqsKrL0P9OyuTQjf23xrUwQJBANMyyhOnngn88LFoM3e7AHjmLHJyktjax8GWfAoO0ohGZEc3+yda0Op68VhIk0oZE9EOW/LYlnJoAkgrQ57QER8CQQDQIQoEjoQVb1c9o5ndsmF+I7v+5YCxKxCzoOariPDUIqVjiOoNsqY+/R4musPcN9UssDZZlhgD6PeylBLsf9JpAkBUzwdgnyWSYzUQOIS6ZqiI4/0jNCkN1cTzUweaTltyh7nK84ryQcC0+AukZPhof+t6PqbjvN+lL2kDLARqaKkHAkEAujQk60i54Rd43LumqBK0aI793aFkjp0x1xNn7CWbGJ9ain9urwya8ZWxSQMkwbvt64pHRcUj/TOLj+gsOgxtqQJBAKKGpR0gUPVasLUqK+m+qMbskMFSyzkQW43PK50VK3PMooxmIaiYe5wv5UYO0elsyozufobaT4dMP14gDjrAAxo=
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  mapper-locations: classpath*:mybatis/**/*Mapper.xml
