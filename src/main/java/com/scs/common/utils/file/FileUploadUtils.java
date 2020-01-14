@@ -130,8 +130,7 @@ public class FileUploadUtils {
     private static String getPathFileName(String uploadDir, String fileName) throws IOException {
         int dirLastIndex = ScsSystemConfig.getProfile().length() + 1;
         String currentDir = StringUtils.substring(uploadDir, dirLastIndex);
-        String pathFileName = Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
-        return pathFileName;
+        return Constants.RESOURCE_PREFIX + "/" + currentDir + "/" + fileName;
     }
 
     /**
