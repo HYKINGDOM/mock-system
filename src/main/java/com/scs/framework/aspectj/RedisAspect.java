@@ -1,5 +1,6 @@
-package com.scs.framework.redis.aspectj;
+package com.scs.framework.aspectj;
 
+import com.scs.framework.aspectj.lang.annotation.RedisCleanUpAnnotation;
 import com.scs.framework.redis.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -30,7 +31,7 @@ public class RedisAspect {
     /**
      * 切点是注解的方式
      */
-    @Pointcut("@annotation(com.scs.framework.redis.aspectj.RedisCleanUpAnnotation)")
+    @Pointcut("@annotation(com.scs.framework.aspectj.lang.annotation.RedisCleanUpAnnotation)")
     public void operationRedisKeyData() {
 
     }

@@ -1,14 +1,5 @@
 package com.scs.framework.security.handle;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import com.alibaba.fastjson.JSON;
 import com.scs.common.constant.Constants;
 import com.scs.common.constant.HttpStatus;
@@ -19,6 +10,13 @@ import com.scs.framework.manager.factory.AsyncFactory;
 import com.scs.framework.security.LoginUser;
 import com.scs.framework.security.service.TokenService;
 import com.scs.framework.web.domain.AjaxResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 自定义退出处理类 返回成功
@@ -36,8 +34,7 @@ public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler {
      * @return
      */
     @Override
-    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
-            throws IOException, ServletException {
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         LoginUser loginUser = tokenService.getLoginUser(request);
         if (StringUtils.isNotNull(loginUser)) {
             String userName = loginUser.getUsername();

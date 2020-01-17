@@ -58,7 +58,7 @@ public class PermissionService {
      * @return 用户是否不具备某权限
      */
     public boolean lacksPermi(String permission) {
-        return hasPermi(permission) != true;
+        return !hasPermi(permission);
     }
 
     /**
@@ -114,7 +114,7 @@ public class PermissionService {
      * @return 用户是否不具备某角色
      */
     public boolean lacksRole(String role) {
-        return hasRole(role) != true;
+        return !hasRole(role);
     }
 
     /**

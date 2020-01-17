@@ -1,4 +1,4 @@
-package com.scs.framework.redis.aspectj;
+package com.scs.framework.aspectj.lang.annotation;
 
 import java.lang.annotation.*;
 
