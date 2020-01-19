@@ -16,7 +16,7 @@ import com.scs.framework.web.domain.Server;
 @RestController
 @RequestMapping("/prod-api/monitor/server")
 public class ServerController extends BaseController {
-    @PreAuthorize("@ss.hasPermi('monitor:server:list')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:server:list')")
     @GetMapping()
     public AjaxResult getInfo() throws Exception {
         Server server = new Server();

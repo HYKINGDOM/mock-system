@@ -35,13 +35,13 @@ public class JobController extends BaseController {
     @Autowired
     private IJobService jobService;
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:view')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:view')")
     @GetMapping()
     public String job() {
         return prefix + "/job";
     }
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:list')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:list')")
     @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(Job job) {
@@ -50,7 +50,7 @@ public class JobController extends BaseController {
         return getDataTable(list);
     }
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:export')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:export')")
     @Log(title = "定时任务", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -60,7 +60,7 @@ public class JobController extends BaseController {
         return util.exportExcel(list, "定时任务");
     }
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:remove')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:remove')")
     @Log(title = "定时任务", businessType = BusinessType.DELETE)
     @PostMapping("/remove")
     @ResponseBody
@@ -69,7 +69,7 @@ public class JobController extends BaseController {
         return success();
     }
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:detail')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:detail')")
     @GetMapping("/detail/{jobId}")
     public String detail(@PathVariable("jobId") Long jobId, ModelMap mmap) {
         mmap.put("name", "job");
@@ -81,7 +81,7 @@ public class JobController extends BaseController {
      * 任务调度状态修改
      */
     @Log(title = "定时任务", businessType = BusinessType.UPDATE)
-    @PreAuthorize("@ss.hasPermi('monitor:job:changeStatus')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:changeStatus')")
     @PostMapping("/changeStatus")
     @ResponseBody
     public AjaxResult changeStatus(Job job) throws SchedulerException {
@@ -94,7 +94,7 @@ public class JobController extends BaseController {
      * 任务调度立即执行一次
      */
     @Log(title = "定时任务", businessType = BusinessType.UPDATE)
-    @PreAuthorize("@ss.hasPermi('monitor:job:changeStatus')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:changeStatus')")
     @PostMapping("/run")
     @ResponseBody
     public AjaxResult run(Job job) throws SchedulerException {
@@ -114,7 +114,7 @@ public class JobController extends BaseController {
      * 新增保存调度
      */
     @Log(title = "定时任务", businessType = BusinessType.INSERT)
-    @PreAuthorize("@ss.hasPermi('monitor:job:add')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:add')")
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addSave(@Validated Job job) throws SchedulerException, TaskException {
@@ -134,7 +134,7 @@ public class JobController extends BaseController {
      * 修改保存调度
      */
     @Log(title = "定时任务", businessType = BusinessType.UPDATE)
-    @PreAuthorize("@ss.hasPermi('monitor:job:edit')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:edit')")
     @PostMapping("/edit")
     @ResponseBody
     public AjaxResult editSave(@Validated Job job) throws SchedulerException, TaskException {

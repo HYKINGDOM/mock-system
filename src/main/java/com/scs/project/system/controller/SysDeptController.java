@@ -36,7 +36,7 @@ public class SysDeptController extends BaseController {
     /**
      * 获取部门列表
      */
-    @PreAuthorize("@ss.hasPermi('system:dept:list')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dept:list')")
     @GetMapping("/list")
     public AjaxResult list(SysDept dept) {
         List<SysDept> depts = deptService.selectDeptList(dept);
@@ -46,7 +46,7 @@ public class SysDeptController extends BaseController {
     /**
      * 根据部门编号获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:dept:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dept:query')")
     @GetMapping(value = "/{deptId}")
     public AjaxResult getInfo(@PathVariable Long deptId) {
         return AjaxResult.success(deptService.selectDeptById(deptId));
@@ -55,7 +55,7 @@ public class SysDeptController extends BaseController {
     /**
      * 获取部门下拉树列表
      */
-    @PreAuthorize("@ss.hasPermi('system:dept:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dept:query')")
     @GetMapping("/treeselect")
     public AjaxResult treeselect(SysDept dept) {
         List<SysDept> depts = deptService.selectDeptList(dept);
@@ -65,7 +65,7 @@ public class SysDeptController extends BaseController {
     /**
      * 加载对应角色部门列表树
      */
-    @PreAuthorize("@ss.hasPermi('system:dept:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dept:query')")
     @GetMapping(value = "/roleDeptTreeselect/{roleId}")
     public AjaxResult roleDeptTreeselect(@PathVariable("roleId") Long roleId) {
         return AjaxResult.success(deptService.selectDeptListByRoleId(roleId));
@@ -74,7 +74,7 @@ public class SysDeptController extends BaseController {
     /**
      * 新增部门
      */
-    @PreAuthorize("@ss.hasPermi('system:dept:add')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dept:add')")
     @Log(title = "部门管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysDept dept) {
@@ -88,7 +88,7 @@ public class SysDeptController extends BaseController {
     /**
      * 修改部门
      */
-    @PreAuthorize("@ss.hasPermi('system:dept:edit')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dept:edit')")
     @Log(title = "部门管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysDept dept) {
@@ -104,7 +104,7 @@ public class SysDeptController extends BaseController {
     /**
      * 删除部门
      */
-    @PreAuthorize("@ss.hasPermi('system:dept:remove')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dept:remove')")
     @Log(title = "部门管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{deptId}")
     public AjaxResult remove(@PathVariable Long deptId) {

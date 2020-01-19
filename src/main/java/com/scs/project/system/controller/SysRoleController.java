@@ -35,7 +35,7 @@ public class SysRoleController extends BaseController {
     @Autowired
     private ISysRoleService roleService;
 
-    @PreAuthorize("@ss.hasPermi('system:role:list')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:list')")
     @GetMapping("/list")
     public TableDataInfo list(SysRole role) {
         startPage();
@@ -44,7 +44,7 @@ public class SysRoleController extends BaseController {
     }
 
     @Log(title = "角色管理", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:role:export')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:export')")
     @GetMapping("/export")
     public AjaxResult export(SysRole role) {
         List<SysRole> list = roleService.selectRoleList(role);
@@ -55,7 +55,7 @@ public class SysRoleController extends BaseController {
     /**
      * 根据角色编号获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:role:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:query')")
     @GetMapping(value = "/{roleId}")
     public AjaxResult getInfo(@PathVariable Long roleId) {
         return AjaxResult.success(roleService.selectRoleById(roleId));
@@ -64,7 +64,7 @@ public class SysRoleController extends BaseController {
     /**
      * 新增角色
      */
-    @PreAuthorize("@ss.hasPermi('system:role:add')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:add')")
     @Log(title = "角色管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysRole role) {
@@ -81,7 +81,7 @@ public class SysRoleController extends BaseController {
     /**
      * 修改保存角色
      */
-    @PreAuthorize("@ss.hasPermi('system:role:edit')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:edit')")
     @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysRole role) {
@@ -98,7 +98,7 @@ public class SysRoleController extends BaseController {
     /**
      * 修改保存数据权限
      */
-    @PreAuthorize("@ss.hasPermi('system:role:edit')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:edit')")
     @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PutMapping("/dataScope")
     public AjaxResult dataScope(@RequestBody SysRole role) {
@@ -109,7 +109,7 @@ public class SysRoleController extends BaseController {
     /**
      * 状态修改
      */
-    @PreAuthorize("@ss.hasPermi('system:role:edit')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:edit')")
     @Log(title = "角色管理", businessType = BusinessType.UPDATE)
     @PutMapping("/changeStatus")
     public AjaxResult changeStatus(@RequestBody SysRole role) {
@@ -121,7 +121,7 @@ public class SysRoleController extends BaseController {
     /**
      * 删除角色
      */
-    @PreAuthorize("@ss.hasPermi('system:role:remove')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:remove')")
     @Log(title = "角色管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{roleIds}")
     public AjaxResult remove(@PathVariable Long[] roleIds) {
@@ -131,7 +131,7 @@ public class SysRoleController extends BaseController {
     /**
      * 获取角色选择框列表
      */
-    @PreAuthorize("@ss.hasPermi('system:role:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:role:query')")
     @GetMapping("/optionselect")
     public AjaxResult optionselect() {
         return AjaxResult.success(roleService.selectRoleAll());

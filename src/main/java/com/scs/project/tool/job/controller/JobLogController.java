@@ -32,13 +32,13 @@ public class JobLogController extends BaseController {
     @Autowired
     private IJobLogService jobLogService;
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:view')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:view')")
     @GetMapping()
     public String jobLog() {
         return prefix + "/jobLog";
     }
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:list')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:list')")
     @PostMapping("/list")
     @ResponseBody
     public TableDataInfo list(JobLog jobLog) {
@@ -48,14 +48,14 @@ public class JobLogController extends BaseController {
     }
 
     @Log(title = "调度日志", businessType = BusinessType.DELETE)
-    @PreAuthorize("@ss.hasPermi('monitor:job:remove')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:remove')")
     @PostMapping("/remove")
     @ResponseBody
     public AjaxResult remove(String ids) {
         return toAjax(jobLogService.deleteJobLogByIds(ids));
     }
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:export')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:export')")
     @Log(title = "调度日志", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     @ResponseBody
@@ -65,7 +65,7 @@ public class JobLogController extends BaseController {
         return util.exportExcel(list, "调度日志");
     }
 
-    @PreAuthorize("@ss.hasPermi('monitor:job:detail')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:detail')")
     @GetMapping("/detail/{jobLogId}")
     public String detail(@PathVariable("jobLogId") Long jobLogId, ModelMap mmap) {
         mmap.put("name", "jobLog");
@@ -74,7 +74,7 @@ public class JobLogController extends BaseController {
     }
 
     @Log(title = "调度日志", businessType = BusinessType.CLEAN)
-    @PreAuthorize("@ss.hasPermi('monitor:job:remove')")
+    @PreAuthorize("@PermissionService.hasPermi('monitor:job:remove')")
     @PostMapping("/clean")
     @ResponseBody
     public AjaxResult clean() {

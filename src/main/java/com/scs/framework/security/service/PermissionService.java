@@ -15,7 +15,7 @@ import com.scs.project.system.domain.SysRole;
  *
  * @author yihur
  */
-@Service("ss")
+@Service("PermissionService")
 public class PermissionService {
     /**
      * 所有权限标识

@@ -38,7 +38,7 @@ public class SysPostController extends BaseController {
     /**
      * 获取岗位列表
      */
-    @PreAuthorize("@ss.hasPermi('system:post:list')")
+    @PreAuthorize("@PermissionService.hasPermi('system:post:list')")
     @GetMapping("/list")
     public TableDataInfo list(SysPost post) {
         startPage();
@@ -47,7 +47,7 @@ public class SysPostController extends BaseController {
     }
 
     @Log(title = "岗位管理", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:config:export')")
+    @PreAuthorize("@PermissionService.hasPermi('system:config:export')")
     @GetMapping("/export")
     public AjaxResult export(SysPost post) {
         List<SysPost> list = postService.selectPostList(post);
@@ -58,7 +58,7 @@ public class SysPostController extends BaseController {
     /**
      * 根据岗位编号获取详细信息
      */
-    @PreAuthorize("@ss.hasPermi('system:post:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:post:query')")
     @GetMapping(value = "/{postId}")
     public AjaxResult getInfo(@PathVariable Long postId) {
         return AjaxResult.success(postService.selectPostById(postId));
@@ -67,7 +67,7 @@ public class SysPostController extends BaseController {
     /**
      * 新增岗位
      */
-    @PreAuthorize("@ss.hasPermi('system:post:add')")
+    @PreAuthorize("@PermissionService.hasPermi('system:post:add')")
     @Log(title = "岗位管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysPost post) {
@@ -83,7 +83,7 @@ public class SysPostController extends BaseController {
     /**
      * 修改岗位
      */
-    @PreAuthorize("@ss.hasPermi('system:post:edit')")
+    @PreAuthorize("@PermissionService.hasPermi('system:post:edit')")
     @Log(title = "岗位管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysPost post) {
@@ -99,7 +99,7 @@ public class SysPostController extends BaseController {
     /**
      * 删除岗位
      */
-    @PreAuthorize("@ss.hasPermi('system:post:remove')")
+    @PreAuthorize("@PermissionService.hasPermi('system:post:remove')")
     @Log(title = "岗位管理", businessType = BusinessType.DELETE)
     @DeleteMapping("/{postIds}")
     public AjaxResult remove(@PathVariable Long[] postIds) {

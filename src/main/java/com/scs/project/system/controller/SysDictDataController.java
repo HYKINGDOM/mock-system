@@ -34,7 +34,7 @@ public class SysDictDataController extends BaseController {
     @Autowired
     private ISysDictDataService dictDataService;
 
-    @PreAuthorize("@ss.hasPermi('system:dict:list')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dict:list')")
     @GetMapping("/list")
     public TableDataInfo list(SysDictData dictData) {
         startPage();
@@ -43,7 +43,7 @@ public class SysDictDataController extends BaseController {
     }
 
     @Log(title = "字典数据", businessType = BusinessType.EXPORT)
-    @PreAuthorize("@ss.hasPermi('system:dict:export')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dict:export')")
     @GetMapping("/export")
     public AjaxResult export(SysDictData dictData) {
         List<SysDictData> list = dictDataService.selectDictDataList(dictData);
@@ -54,7 +54,7 @@ public class SysDictDataController extends BaseController {
     /**
      * 查询字典数据详细
      */
-    @PreAuthorize("@ss.hasPermi('system:dict:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dict:query')")
     @GetMapping(value = "/{dictCode}")
     public AjaxResult getInfo(@PathVariable Long dictCode) {
         return AjaxResult.success(dictDataService.selectDictDataById(dictCode));
@@ -63,7 +63,7 @@ public class SysDictDataController extends BaseController {
     /**
      * 根据字典类型查询字典数据信息
      */
-    @PreAuthorize("@ss.hasPermi('system:dict:query')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dict:query')")
     @GetMapping(value = "/dictType/{dictType}")
     public AjaxResult dictType(@PathVariable String dictType) {
         return AjaxResult.success(dictDataService.selectDictDataByType(dictType));
@@ -72,7 +72,7 @@ public class SysDictDataController extends BaseController {
     /**
      * 新增字典类型
      */
-    @PreAuthorize("@ss.hasPermi('system:dict:add')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dict:add')")
     @Log(title = "字典数据", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysDictData dict) {
@@ -83,7 +83,7 @@ public class SysDictDataController extends BaseController {
     /**
      * 修改保存字典类型
      */
-    @PreAuthorize("@ss.hasPermi('system:dict:edit')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dict:edit')")
     @Log(title = "字典数据", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysDictData dict) {
@@ -94,7 +94,7 @@ public class SysDictDataController extends BaseController {
     /**
      * 删除字典类型
      */
-    @PreAuthorize("@ss.hasPermi('system:dict:remove')")
+    @PreAuthorize("@PermissionService.hasPermi('system:dict:remove')")
     @Log(title = "字典类型", businessType = BusinessType.DELETE)
     @DeleteMapping("/{dictCodes}")
     public AjaxResult remove(@PathVariable Long[] dictCodes) {
