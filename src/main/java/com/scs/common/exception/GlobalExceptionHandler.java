@@ -14,6 +14,8 @@ import com.scs.common.constant.HttpStatus;
 import com.scs.common.utils.StringUtils;
 import com.scs.framework.web.domain.AjaxResult;
 
+import java.util.Objects;
+
 /**
  * 全局异常处理器
  *
@@ -88,7 +90,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Object validExceptionHandler(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
-        String message = e.getBindingResult().getFieldError().getDefaultMessage();
+        String message = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
         return AjaxResult.error(message);
     }
 
