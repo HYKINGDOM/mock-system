@@ -5,6 +5,7 @@ import com.scs.common.utils.JsonUtils;
 import com.scs.common.utils.JsoupUtils;
 import com.scs.framework.aspectj.lang.annotation.Log;
 import com.scs.framework.aspectj.lang.enums.BusinessType;
+import com.scs.framework.aspectj.lang.enums.OperatorType;
 import com.scs.framework.web.controller.BaseController;
 import com.scs.framework.web.domain.AjaxResult;
 import com.scs.project.system.domain.vo.SysUserRegisterVo;
@@ -41,12 +42,10 @@ public class SysUserRegisterController extends BaseController {
      * @return
      */
     @ApiOperation(value = "用户注册", notes = "根据用户信息校验通过后注册")
-    @Log(title = "用户注册", businessType = BusinessType.INSERT)
     @PostMapping("/registerUserInfo")
-    public AjaxResult sysUserInfoRegister(@RequestBody @Validated SysUserRegisterVo readValue, BindingResult results) {
+    public AjaxResult sysUserInfoRegister(@RequestBody @Valid SysUserRegisterVo readValue, BindingResult results) {
         if (results.hasErrors()) {
-            System.out.println(Arrays.toString(results.getAllErrors().toArray()));
-            return AjaxResult.error("数据有误!请检查!", results.getFieldError().getDefaultMessage());
+            return AjaxResult.error("数据有误!请检查!", Objects.requireNonNull(results.getFieldError()).getDefaultMessage());
         }
 
         //String returnErrorMassage = returnErrorMassageFun(readValue);

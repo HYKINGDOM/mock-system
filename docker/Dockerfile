@@ -5,6 +5,7 @@ FROM docker.io/java:8
 MAINTAINER 1370054591@qq.com
 
 ENV TZ=Asia/Shanghai
+
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # 在新镜像内部执行的命令，比如安装一些软件、配置一些基础环境，可使用\来换行，当前设置是指定时区,&&支持多命令
@@ -26,6 +27,7 @@ EXPOSE 8788
 # 将文件复制到镜像中
 ADD ./target/mock-system.jar  ./
 
-CMD java -Djava.security.egd=file:/dev/./urandom -jar mock-system.jar
+# 启动时设置时区
+CMD java -Djava.security.egd=file:/dev/./urandom -jar -Duser.timezone=GMT+08 mock-system.jar
 
 

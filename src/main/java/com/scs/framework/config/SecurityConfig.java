@@ -106,6 +106,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //临时打开
                 .antMatchers("/prod-api/crawl/**").anonymous()
                 .antMatchers("/prod-api/search/**").anonymous()
+                //用户注册
+                .antMatchers("/prod-api/system/user/register/**").anonymous()
                 //.antMatchers("/pro-api/dbvisual/**").anonymous()
 
                 // 除上面外的所有请求全部需要鉴权认证

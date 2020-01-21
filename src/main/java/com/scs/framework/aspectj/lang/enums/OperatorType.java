@@ -12,6 +12,11 @@ public enum OperatorType {
     OTHER,
 
     /**
+     * 主页面
+     */
+    MAINWEB,
+
+    /**
      * 后台用户
      */
     MANAGE,
