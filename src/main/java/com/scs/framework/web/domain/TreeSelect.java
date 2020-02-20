@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.scs.project.system.domain.SysDept;
-import com.scs.project.system.domain.SysMenu;
+import com.scs.project.system.dept.domain.SysDept;
+import com.scs.project.system.menu.domain.SysMenu;
 
 /**
  * Treeselect树结构实体类

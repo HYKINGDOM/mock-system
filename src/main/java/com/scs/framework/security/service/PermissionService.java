@@ -8,7 +8,7 @@ import org.springframework.util.CollectionUtils;
 import com.scs.common.utils.ServletUtils;
 import com.scs.common.utils.StringUtils;
 import com.scs.framework.security.LoginUser;
-import com.scs.project.system.domain.SysRole;
+import com.scs.project.system.role.domain.SysRole;
 
 /**
  * 自定义权限实现，se取自SpringSecurity首字母

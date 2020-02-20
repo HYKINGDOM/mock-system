@@ -1,13 +1,11 @@
 package com.scs.project.scs.dbinfo.service.serviceimp;
 
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.scs.common.utils.RsaUtils;
 import com.scs.framework.security.service.TokenService;
 import com.scs.project.scs.dbinfo.domain.DbInfo;
-import com.scs.project.scs.dbinfo.mapper.DbBaseMapper;
-import com.scs.project.scs.dbinfo.mapper.DbConnectionMapper;
+import com.scs.project.scs.dbinfo.dao.DbConnectionMapper;
 import com.scs.project.scs.dbinfo.service.DbConnectionService;
-import com.scs.project.system.domain.SysUser;
+import com.scs.project.system.user.domain.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

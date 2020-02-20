@@ -27,7 +27,7 @@ import com.scs.framework.manager.AsyncManager;
 import com.scs.framework.manager.factory.AsyncFactory;
 import com.scs.framework.security.LoginUser;
 import com.scs.framework.security.service.TokenService;
-import com.scs.project.monitor.domain.SysOperLog;
+import com.scs.project.system.monitor.domain.SysOperLog;
 
 /**
  * 操作日志记录处理

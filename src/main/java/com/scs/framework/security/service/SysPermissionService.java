@@ -5,9 +5,9 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.scs.project.system.domain.SysUser;
-import com.scs.project.system.service.ISysMenuService;
-import com.scs.project.system.service.ISysRoleService;
+import com.scs.project.system.user.domain.SysUser;
+import com.scs.project.system.menu.service.ISysMenuService;
+import com.scs.project.system.role.service.ISysRoleService;
 
 /**
  * 用户权限处理

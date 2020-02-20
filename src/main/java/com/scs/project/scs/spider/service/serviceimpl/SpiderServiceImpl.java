@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 import com.scs.common.constant.RedisConstant;
 import com.scs.common.utils.StringUtils;
 import com.scs.framework.redis.RedisUtil;
-import com.scs.project.scs.spider.mapper.SpiderMapper;
+import com.scs.project.scs.spider.dao.SpiderMapper;
 import com.scs.project.scs.spider.domain.BookChapter;
 import com.scs.project.scs.spider.domain.BookInfo;
 import com.scs.project.scs.spider.service.SpiderService;

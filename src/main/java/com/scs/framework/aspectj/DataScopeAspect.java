@@ -16,8 +16,8 @@ import com.scs.framework.aspectj.lang.annotation.DataScope;
 import com.scs.framework.security.LoginUser;
 import com.scs.framework.security.service.TokenService;
 import com.scs.framework.web.domain.BaseEntity;
-import com.scs.project.system.domain.SysRole;
-import com.scs.project.system.domain.SysUser;
+import com.scs.project.system.role.domain.SysRole;
+import com.scs.project.system.user.domain.SysUser;
 
 /**
  * 数据过滤处理

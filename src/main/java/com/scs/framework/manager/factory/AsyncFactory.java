@@ -10,10 +10,10 @@ import com.scs.common.utils.ServletUtils;
 import com.scs.common.utils.ip.AddressUtils;
 import com.scs.common.utils.ip.IpUtils;
 import com.scs.common.utils.spring.SpringUtils;
-import com.scs.project.monitor.domain.SysLogininfor;
-import com.scs.project.monitor.domain.SysOperLog;
-import com.scs.project.monitor.service.ISysLogininforService;
-import com.scs.project.monitor.service.ISysOperLogService;
+import com.scs.project.system.monitor.domain.SysLogininfor;
+import com.scs.project.system.monitor.domain.SysOperLog;
+import com.scs.project.system.monitor.service.ISysLogininforService;
+import com.scs.project.system.monitor.service.ISysOperLogService;
 import eu.bitwalker.useragentutils.UserAgent;
 
 /**

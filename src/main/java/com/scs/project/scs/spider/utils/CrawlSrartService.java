@@ -1,6 +1,6 @@
 package com.scs.project.scs.spider.utils;
 
-import com.scs.project.scs.spider.mapper.SpiderMapper;
+import com.scs.project.scs.spider.dao.SpiderMapper;
 import com.scs.project.scs.spider.domain.BookChapter;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;

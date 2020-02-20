@@ -11,8 +11,8 @@ import com.scs.common.enums.UserStatus;
 import com.scs.common.exception.BaseException;
 import com.scs.common.utils.StringUtils;
 import com.scs.framework.security.LoginUser;
-import com.scs.project.system.domain.SysUser;
-import com.scs.project.system.service.ISysUserService;
+import com.scs.project.system.user.domain.SysUser;
+import com.scs.project.system.user.service.ISysUserService;
 
 /**
  * 用户验证处理

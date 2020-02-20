@@ -18,3 +18,13 @@
 * 加入可选配的定时任务工具 ---待合入
 * 加入Oauth2实现当中的密码和授权码两种模式 ---待开发
 * 用户注册功能个 ---待移植
+
+#### 阿里巴巴编码规约
+
+* 分层领域模型规约
+    * DO (Data Object): 此对象与数据库表结构一一对应,通过dao层向上传输数据源对象
+    * DTO (Data Transfer Object): 数据传输对象,Service或者Manager向外传输的对象
+    * BO (Business Object): 业务对象,由Service层输出的封装业务逻辑对象
+    * AO (Application Object): 应用对象,在Web层和Service层之间的抽象的复用对象模型,极为贴近展示层,复用度不高
+    * VO (View Object): 显示层对象,通常是Web向渲染引擎层传输的对象
+    * Query: 数据查询对象,各层接收上层的查询请求, 注意超过2个参数的查询封装,禁止使用Map类来传输.

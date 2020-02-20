@@ -43,7 +43,7 @@ spring:
     # 国际化资源文件路径
     basename: i18n/messages
   profiles:
-    active: prod
+    active: dev
   # 文件上传
   servlet:
     multipart:
@@ -69,7 +69,7 @@ token:
 # MyBatis配置
 mybatis:
   # 搜索指定包别名
-  typeAliasesPackage: com.scs.project.**.domain
+  typeAliasesPackage: com.scs.project.*.*.domain
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath*:mybatis/**/*Mapper.xml
   # 加载全局的配置文件

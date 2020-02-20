@@ -30,7 +30,7 @@ import org.springframework.util.ClassUtils;
  * @author yihur
  */
 @Configuration
-@MapperScan(basePackages = {"com.scs.project.*.mapper", "com.scs.project.*.*.mapper"})
+@MapperScan(basePackages = {"com.scs.project.*.dao", "com.scs.project.*.*.dao"})
 public class MyBatisConfig {
     @Autowired
     private Environment env;

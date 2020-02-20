@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.scs.project.system.mapper.SysNoticeMapper">
+<mapper namespace="com.scs.project.system.common.dao.SysNoticeMapper">
     
-    <resultMap type="com.scs.project.system.domain.SysNotice" id="SysNoticeResult">
+    <resultMap type="com.scs.project.system.common.domain.SysNotice" id="SysNoticeResult">
         <result property="noticeId"       column="notice_id"       />
         <result property="noticeTitle"    column="notice_title"    />
         <result property="noticeType"     column="notice_type"     />
@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where notice_id = #{noticeId}
     </select>
     
-    <select id="selectNoticeList" parameterType="com.scs.project.system.domain.SysNotice" resultMap="SysNoticeResult">
+    <select id="selectNoticeList" parameterType="com.scs.project.system.common.domain.SysNotice" resultMap="SysNoticeResult">
         <include refid="selectNoticeVo"/>
         <where>
 			<if test="noticeTitle != null and noticeTitle != ''">
@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
     </select>
     
-    <insert id="insertNotice" parameterType="com.scs.project.system.domain.SysNotice">
+    <insert id="insertNotice" parameterType="com.scs.project.system.common.domain.SysNotice">
         insert into sys_notice (
 			<if test="noticeTitle != null and noticeTitle != '' ">notice_title, </if>
 			<if test="noticeType != null and noticeType != '' ">notice_type, </if>
@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
     </insert>
 	 
-    <update id="updateNotice" parameterType="com.scs.project.system.domain.SysNotice">
+    <update id="updateNotice" parameterType="com.scs.project.system.common.domain.SysNotice">
         update sys_notice 
         <set>
             <if test="noticeTitle != null and noticeTitle != ''">notice_title = #{noticeTitle}, </if>
